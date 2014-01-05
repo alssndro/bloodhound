@@ -1,0 +1,35 @@
+#blog-info.clearfix
+  %img{class: "avatar", src: @asks.blog_avatar_url}
+  %a{href: @asks.blog_url, target: "_blank"}
+    %h2.blog-owner
+      = @asks.name
+  %p.asks-total
+    = @asks.no_of_asks
+    asks
+
+  - if @current_page_no > 1
+    %a.page-btn{href: "/#{@asks.username}/#{(@current_page_no -1).to_s}"}
+      Prev
+  - if @current_page_no != @asks.last_page_no
+    %a.page-btn{href: "/#{@asks.username}/#{(@current_page_no +1).to_s}"}
+      Next
+    %a.page-btn{href: "/#{@asks.username}/#{@asks.last_page_no}"}
+      Last
+  %p.page-status
+    Page
+    =@current_page_no
+    of
+    =@asks.last_page_no
+
+#ask-list
+  - @asks.question_list.each do |question|
+    .ask
+      %h2.question
+        = question.question
+      %p.answer
+        = question.answer
+      %p.asked-on
+        = question.asked_on
+
+  %a.to-the-top-btn.page-btn{href: "#header"}
+    &uarr; Top
