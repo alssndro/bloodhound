@@ -1,9 +1,8 @@
 require 'sinatra/base'
 require 'haml'
-require 'pry'
 
-require './lib/tumblr_question'
-require './lib/tumblr_asks'
+# recursively require all model files
+Dir[Dir.pwd + "/models/**/*.rb"].each { |f| require f }
 
 class App < Sinatra::Base
 
@@ -15,21 +14,21 @@ class App < Sinatra::Base
     haml :home
   end
 
-  get '/search' do
+  get '/search/?' do
     @asks = TumblrAsks.new(params[:username], 1)
     @current_page_no = 1
 
     haml :questions
   end
 
-  get '/:username' do
+  get '/:username/?' do
     @asks = TumblrAsks.new(params[:username], 1)
     @current_page_no = 1
 
     haml :questions
   end
 
-  get '/:username/:page_start' do
+  get '/:username/:page_start/?' do
     @asks = TumblrAsks.new(params[:username], params[:page_start].to_i )
     @current_page_no = params[:page_start].to_i
 

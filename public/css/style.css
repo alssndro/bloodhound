@@ -109,7 +109,7 @@ body {
 
 #container {
   padding: 0 10%; }
-  @media (min-width: 600px) {
+  @media (min-width: 700px) {
     #container {
       padding: 0; } }
 
@@ -121,23 +121,40 @@ img {
   max-width: 100%;
   margin: 0 0 26px 0; }
 
+#search-toggle {
+  display: block;
+  margin: 0 0 0 20%;
+  width: 52px;
+  height: 52px;
+  background-color: #e085a4;
+  color: white;
+  line-height: 52px;
+  text-align: center;
+  text-transform: uppercase; }
+
+#search-toggle:hover {
+  background-color: #d55d86; }
+
 .search-btn {
+  display: none;
   width: 10%;
   background-color: #e085a4;
   color: white;
   float: left;
   height: 2.888888889em;
   border: none;
-  transition: background-color 0.2s ease; }
+  transition: background-color 0.2s ease;
+  margin: 52px 0 0 0; }
 
 .search-btn:hover {
   background-color: #d55d86;
   transition: background-color 0.2s ease; }
 
 .search-box {
+  display: none;
   width: 60%;
   float: left;
-  margin: 0 0 0 20%;
+  margin: 52px 0 0 20%;
   height: 2.888888889em;
   border: none;
   background-color: #e6e6e6;
@@ -147,7 +164,7 @@ img {
   width: 100%;
   text-align: center;
   margin: 2.888888889em 0; }
-  @media (min-width: 600px) {
+  @media (min-width: 700px) {
     #blog-info {
       position: fixed;
       width: 20%;
@@ -164,7 +181,7 @@ img {
 
 .avatar {
   -webkit-border-radius: 52px;
-  max-width: 104px; }
+  max-width: 80.620155%; }
 
 .blog-owner {
   margin: 0 0 13px 0;
@@ -173,7 +190,7 @@ img {
 .asks-total {
   color: #cccccc; }
 
-.page-btn {
+.button {
   display: block;
   margin: 0 0 13px 0;
   text-align: center;
@@ -181,22 +198,23 @@ img {
   -webkit-border-radius: 3px;
   color: #eaaec3;
   transition: all 0.2s ease;
-  width: 100%;
-  float: left;
   font-size: 0.777777778em;
   line-height: 1.830985915;
   padding: 13px 0; }
-  @media (min-width: 600px) {
-    .page-btn {
-      width: 104px;
-      margin: 0 0 13px 0;
-      padding: 0; } }
 
-.page-btn:hover {
+.button:hover {
   background-color: #d55d86;
   color: white;
   transition: all 0.2s ease;
   border-color: #d55d86; }
+
+.page-btn {
+  width: 100%;
+  float: left; }
+  @media (min-width: 700px) {
+    .page-btn {
+      width: 80.620155%;
+      padding: 0; } }
 
 .page-status {
   font-size: 0.777777778em;
@@ -207,17 +225,17 @@ img {
 
 #ask-list {
   width: 100%; }
-  @media (min-width: 600px) {
+  @media (min-width: 700px) {
     #ask-list {
       float: left;
       margin: 0 0 0 20%;
       width: 80%;
-      padding: 5.777777778em 40% 0 0; } }
+      padding: 5.777777778em 10% 0 0; } }
   @media (min-width: 1000px) {
     #ask-list {
       margin: 0 0 0 20%;
       width: 80%;
-      padding: 5.777777778em 40% 0 0; } }
+      padding: 5.777777778em 30% 0 0; } }
 
 .ask {
   margin: 0 0 4.333333333em 0; }
@@ -230,9 +248,7 @@ img {
   color: #cccccc; }
 
 .to-the-top-button {
-  display: block;
-  width: 100%;
-  text-align: center; }
+  width: 100%; }
 
 /* ==========================================================================
    Helper classes

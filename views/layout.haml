@@ -5,12 +5,14 @@
     %title App Name
     %link{:rel => 'stylesheet', :href => '/css/normalize.css', :type => 'text/css'}
     %link{:rel => 'stylesheet', :href => '/css/style.css', :type => 'text/css'}
-    %script{:type => 'text/javascript', :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'}
-    %script{:type => 'text/javascript', :src => 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'}
   %body
     #container.clearfix
       #header
+        %a#search-toggle{href: "#"}
+          %img.search-icon{src: "/search-icon.png"}
         %form.search-form{ action: "/search", method: "get" }
           %input.search-box{ type: "text", name: "username", placeholder: "Enter a tumblr username..." }
           %input.search-btn{ type: "submit", value: "Search"}
       = yield
+    %script{:type => 'text/javascript', :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'}
+    %script{:type => 'text/javascript', :src => '/js/app.js'}

@@ -8,12 +8,12 @@
     asks
 
   - if @current_page_no > 1
-    %a.page-btn{href: "/#{@asks.username}/#{(@current_page_no -1).to_s}"}
+    %a.page-btn.button{href: "/#{@asks.username}/#{(@current_page_no -1).to_s}"}
       Prev
   - if @current_page_no != @asks.last_page_no
-    %a.page-btn{href: "/#{@asks.username}/#{(@current_page_no +1).to_s}"}
+    %a.page-btn.button{href: "/#{@asks.username}/#{(@current_page_no +1).to_s}"}
       Next
-    %a.page-btn{href: "/#{@asks.username}/#{@asks.last_page_no}"}
+    %a.page-btn.button{href: "/#{@asks.username}/#{@asks.last_page_no}"}
       Last
   %p.page-status
     Page
@@ -31,5 +31,5 @@
       %p.asked-on
         = question.asked_on
 
-  %a.to-the-top-btn.page-btn{href: "#header"}
+  %a.to-the-top-btn.button{href: "#header"}
     &uarr; Top

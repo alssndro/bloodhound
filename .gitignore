@@ -1,1 +1,5 @@
+.rspec
+.DS_Store
 lib/tumblr_config.yml
+todo.txt
+.sass-cache

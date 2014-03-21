@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.0'
 
 # Development dependencies
 gem 'rake'
@@ -13,7 +14,8 @@ end
 
 # Testing dependencies
 group :test do
-  gem 'minitest'
+  gem 'rspec'
+  gem 'capybara'
   gem 'rack-test'
-  gem 'vcr'
+  gem 'webmock'
 end

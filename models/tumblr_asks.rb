@@ -1,5 +1,4 @@
 require 'httparty'
-require 'pry'
 
 require_relative "tumblr_question"
 
@@ -7,8 +6,7 @@ class TumblrAsks
   attr_accessor :username, :question_list, :name, :blog_url, :no_of_asks
 
   # Consumer key can be used as an API key
-  CONFIG = YAML.load_file(File.join(__dir__, 'tumblr_config.yml'))
-  CONSUMER_KEY = CONFIG["consumer_key"]
+  CONSUMER_KEY = ENV['TUMBLR_CONSUMER_KEY'] || YAML.load_file("config/tumblr_config.yaml")["consumer_key"]
 
   # Tumblr API returns at most 20 posts per call
   PAGE_LENGTH = 20
@@ -42,7 +40,7 @@ class TumblrAsks
     # 'offset' is the post number to start at (from  0) so remember to subtract page_length
     # to ensure page 1 returns posts from post no 0
     response = HTTParty.get("http://api.tumblr.com/v2/blog/#{base_hostname()}/posts/answer?api_key=#{CONSUMER_KEY}&offset=#{page_start_pos * PAGE_LENGTH - PAGE_LENGTH }&filter=text")
-
+    
     question_list = []
 
     response["response"]["posts"].each do |post|
@@ -63,6 +61,4 @@ class TumblrAsks
   def base_hostname
     @username.match(/.com/) ? @username : "#{@username}.tumblr.com"
   end
-
-
 end

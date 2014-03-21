@@ -10,7 +10,7 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
-$small: '600px';
+$small: '700px';
 $medium: '1000px';
 
 $button-colour: #d55d86;
@@ -157,7 +157,28 @@ img {
   margin: 0 0 26px 0;
 }
 
+#header {
+
+}
+
+#search-toggle {
+  display: block;
+  margin: 0 0 0 20%;
+  width: 52px;
+  height: 52px;
+  background-color: $light-pink;
+  color: white;
+  line-height: 52px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#search-toggle:hover {
+  background-color: $medium-pink;
+}
+
 .search-btn {
+  display: none;
   width: 10%;
   background-color: $light-pink;
   color: white;
@@ -165,6 +186,7 @@ img {
   height: 2.888888889em;
   border: none;
   transition: background-color 0.2s ease;
+  margin: 52px 0 0 0;
 }
 
 .search-btn:hover {
@@ -173,9 +195,10 @@ img {
 }
 
 .search-box {
+  display: none;
   width: 60%;
   float: left;
-  margin: 0 0 0 20%;
+  margin: 52px 0 0 20%;
   height: 2.888888889em;
   border: none;
   background-color: $light-gray;
@@ -207,7 +230,7 @@ img {
 
 .avatar {
   -webkit-border-radius: 52px;
-  max-width: 104px;
+  max-width: 80.620155%;
 }
 
 .blog-owner {
@@ -219,32 +242,36 @@ img {
   color: $dark-gray;
 }
 
-.page-btn {
- display:block;
- margin: 0 0 13px 0;
- text-align: center;
- border: 2px solid lighten($button-colour, 35%);
- -webkit-border-radius: 3px;
- color: lighten($button-colour, 20%);
- transition: all 0.2s ease;
- width: 100%;
- float: left;
- font-size: 0.777777778em;
- line-height: 1.830985915;
-padding: 13px 0;
-
- @media(min-width: $small) {
-  width: 104px;
+.button {
+  display:block;
   margin: 0 0 13px 0;
-  padding: 0;
- }
+  text-align: center;
+  border: 2px solid lighten($button-colour, 35%);
+  -webkit-border-radius: 3px;
+  color: lighten($button-colour, 20%);
+  transition: all 0.2s ease;
+  font-size: 0.777777778em;
+  line-height: 1.830985915;
+  padding: 13px 0;
 }
 
-.page-btn:hover {
+.button:hover {
   background-color: $button-colour;
   color: white;
   transition: all 0.2s ease;
-  border-color: $button-colour;
+  border-color: $button-colour; 
+}
+
+
+.page-btn {
+   width: 100%;
+   float: left;
+
+
+   @media(min-width: $small) {
+    width: 80.620155%;
+    padding: 0;
+   }
 }
 
 .page-status {
@@ -262,13 +289,13 @@ padding: 13px 0;
   float: left;
   margin: 0 0 0 20%;
   width: 80%;
-  padding: 5.777777778em 40% 0 0;
+  padding: 5.777777778em 10% 0 0;
  }
 
  @media(min-width: $medium) {
   margin: 0 0 0 20%;
   width: 80%;
-  padding: 5.777777778em 40% 0 0;
+  padding: 5.777777778em 30% 0 0;
  }
 }
 
@@ -285,9 +312,7 @@ padding: 13px 0;
 }
 
 .to-the-top-button {
-  display: block;
   width: 100%;
-  text-align: center;
 }
 /* ==========================================================================
    Helper classes

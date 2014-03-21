@@ -6,7 +6,7 @@ class TumblrQuestion
 
     # Remove html tags
     @answer = question_hash["answer"]
-    @question_url = question_hash[question_hash]
+    @question_url = question_hash["post_url"]
     @asked_on = Time.at(question_hash["timestamp"]).strftime("%b %e %Y")
   end
 end
