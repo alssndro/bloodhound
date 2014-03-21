@@ -16,32 +16,32 @@ class App < Sinatra::Base
     haml :home
   end
 
-  get '/search/?' do
-    # Check that the user exists
-    @asks = TumblrAsks.new(params[:username])
+  before do
+    # Creates the TumblrAsk object required for the view templates,
+    # redirecting if the username does not exist
+    def create_asks(page_start = 1)
+      @asks = TumblrAsks.new(params[:username])
+      
+      # Condition returns false if the user does not exist
+      if @asks.questions(page_start)
+        @current_page_no = page_start
 
-    if @asks.questions
-      @current_page_no = 1
-
-      haml :questions
-    else
-      haml :user_does_not_exist
+        haml :questions
+      else
+        haml :user_does_not_exist
+      end
     end
   end
 
-  get '/:username/?' do
-    @asks = TumblrAsks.new(params[:username])
-    @asks.questions(1)
-    @current_page_no = 1
+  get '/search/?' do
+    create_asks
+  end
 
-    haml :questions
+  get '/:username/?' do
+    create_asks
   end
 
   get '/:username/:page_start/?' do
-    @asks = TumblrAsks.new(params[:username])
-    @asks.questions(params[:page_start].to_i)
-    @current_page_no = params[:page_start].to_i
-
-    haml :questions
+    create_asks(params[:page_start].to_i)
   end
 end

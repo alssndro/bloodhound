@@ -15,8 +15,8 @@ class TumblrAsks
     @username = username
   end
 
-  def questions(page_start_pos = 0)
-    @questions ||= retrieve_asks(page_start_pos)
+  def questions(page_start = 1)
+    @questions ||= retrieve_asks(page_start)
   end
 
   def blog_url
@@ -38,11 +38,11 @@ class TumblrAsks
   private
 
   # Makes a call to the Tumblr API to retrieve asks data
-  def retrieve_asks(page_start_pos)
+  def retrieve_asks(page_start)
 
     # offset API param is the post number to start at (from  0) so remember to subtract page_length
     # to ensure page 1 returns posts from post number 0
-    offset = calc_offset(page_start_pos)
+    offset = calc_offset(page_start)
 
     response = HTTParty.get("http://api.tumblr.com/v2/blog/#{base_hostname()}/posts/answer?api_key=#{CONSUMER_KEY}&offset=#{offset}&filter=text")
 
@@ -65,8 +65,8 @@ class TumblrAsks
     end
   end
 
-  def calc_offset(page_start_pos)
-    page_start_pos == 0 ? 0 : (page_start_pos * PAGE_LENGTH - PAGE_LENGTH)
+  def calc_offset(page_start)
+    page_start == 1 ? 0 : (page_start * PAGE_LENGTH - PAGE_LENGTH)
   end
 
   # Each blog has a unique hostname, which can be standard or custom
