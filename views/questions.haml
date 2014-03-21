@@ -22,7 +22,7 @@
     =@asks.last_page_no
 
 #ask-list
-  - @asks.question_list.each do |question|
+  - @asks.questions.each do |question|
     .ask
       %h2.question
         = question.question

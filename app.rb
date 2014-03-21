@@ -6,8 +6,10 @@ Dir[Dir.pwd + "/models/**/*.rb"].each { |f| require f }
 
 class App < Sinatra::Base
 
-  before do 
-    
+  helpers do
+    def check_user_exists(asks)
+
+    end
   end
 
   get '/' do
@@ -15,21 +17,29 @@ class App < Sinatra::Base
   end
 
   get '/search/?' do
-    @asks = TumblrAsks.new(params[:username], 1)
-    @current_page_no = 1
+    # Check that the user exists
+    @asks = TumblrAsks.new(params[:username])
 
-    haml :questions
+    if @asks.questions
+      @current_page_no = 1
+
+      haml :questions
+    else
+      haml :user_does_not_exist
+    end
   end
 
   get '/:username/?' do
-    @asks = TumblrAsks.new(params[:username], 1)
+    @asks = TumblrAsks.new(params[:username])
+    @asks.questions(1)
     @current_page_no = 1
 
     haml :questions
   end
 
   get '/:username/:page_start/?' do
-    @asks = TumblrAsks.new(params[:username], params[:page_start].to_i )
+    @asks = TumblrAsks.new(params[:username])
+    @asks.questions(params[:page_start].to_i)
     @current_page_no = params[:page_start].to_i
 
     haml :questions

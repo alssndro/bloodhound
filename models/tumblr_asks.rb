@@ -3,7 +3,7 @@ require 'httparty'
 require_relative "tumblr_question"
 
 class TumblrAsks
-  attr_accessor :username, :question_list, :name, :blog_url, :no_of_asks
+  attr_accessor :username, :name, :blog_url, :no_of_asks
 
   # Consumer key can be used as an API key
   CONSUMER_KEY = ENV['TUMBLR_CONSUMER_KEY'] || YAML.load_file("config/tumblr_config.yaml")["consumer_key"]
@@ -11,9 +11,12 @@ class TumblrAsks
   # Tumblr API returns at most 20 posts per call
   PAGE_LENGTH = 20
 
-  def initialize(username, page_start_pos = 0)
+  def initialize(username)
     @username = username
-    @question_list = retrieve_asks(page_start_pos)
+  end
+
+  def questions(page_start_pos = 0)
+    @questions ||= retrieve_asks(page_start_pos)
   end
 
   def blog_url
@@ -34,24 +37,36 @@ class TumblrAsks
 
   private
 
-  # Make a call to the tumblr api to retrieve asks.
+  # Makes a call to the Tumblr API to retrieve asks data
   def retrieve_asks(page_start_pos)
 
-    # 'offset' is the post number to start at (from  0) so remember to subtract page_length
-    # to ensure page 1 returns posts from post no 0
-    response = HTTParty.get("http://api.tumblr.com/v2/blog/#{base_hostname()}/posts/answer?api_key=#{CONSUMER_KEY}&offset=#{page_start_pos * PAGE_LENGTH - PAGE_LENGTH }&filter=text")
-    
-    question_list = []
+    # offset API param is the post number to start at (from  0) so remember to subtract page_length
+    # to ensure page 1 returns posts from post number 0
+    offset = calc_offset(page_start_pos)
 
-    response["response"]["posts"].each do |post|
-      question_list << TumblrQuestion.new(post)
+    response = HTTParty.get("http://api.tumblr.com/v2/blog/#{base_hostname()}/posts/answer?api_key=#{CONSUMER_KEY}&offset=#{offset}&filter=text")
+
+    # The API returns a 404 status if the user is not found, so check for this
+    # and return false if so
+    if response["meta"]["status"] == 404
+      return false
+    else
+      question_list = []
+
+      response["response"]["posts"].each do |post|
+        question_list << TumblrQuestion.new(post)
+      end
+
+      @name = response["response"]["blog"]["name"]
+      @blog_url = response["response"]["blog"]["url"]
+      @no_of_asks = response["response"]["total_posts"]
+
+      return question_list
     end
+  end
 
-    @name = response["response"]["blog"]["name"]
-    @blog_url = response["response"]["blog"]["url"]
-    @no_of_asks = response["response"]["total_posts"]
-
-    return question_list
+  def calc_offset(page_start_pos)
+    page_start_pos == 0 ? 0 : (page_start_pos * PAGE_LENGTH - PAGE_LENGTH)
   end
 
   # Each blog has a unique hostname, which can be standard or custom

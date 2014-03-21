@@ -8,11 +8,11 @@
   %body
     #container.clearfix
       #header
-        %a#search-toggle{href: "#"}
-          %img.search-icon{src: "/search-icon.png"}
-        %form.search-form{ action: "/search", method: "get" }
-          %input.search-box{ type: "text", name: "username", placeholder: "Enter a tumblr username..." }
-          %input.search-btn{ type: "submit", value: "Search"}
+        -# %a#search-toggle{href: "#"}
+        -#   %img.search-icon{src: "/search-icon.png"}
+        -# %form.search-form{ action: "/search", method: "get" }
+        -#   %input.search-box{ type: "text", name: "username", placeholder: "Enter a tumblr username..." }
+        -#   %input.search-btn{ type: "submit", value: "Search"}
       = yield
     %script{:type => 'text/javascript', :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'}
     %script{:type => 'text/javascript', :src => '/js/app.js'}

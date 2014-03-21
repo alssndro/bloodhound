@@ -1,1 +1,5 @@
 %h1 Homepage
+
+%form#search{ action: "/search", method: "get"}
+  %input.search-field{ type: "text", name: "username", placeholder: "Enter a tumblr username..." }
+  %input{ type: "submit", value: "Search"}
