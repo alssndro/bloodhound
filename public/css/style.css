@@ -13,10 +13,10 @@
   box-sizing: border-box; }
 
 html {
-  color: #222; }
-
-html {
+  color: #444444;
   font-size: 1.125em;
+  font-family: 'Source Sans Pro';
+  font-weight: 300;
   line-height: 1.444444444; }
 
 /*
@@ -88,52 +88,83 @@ h1, h2, h3, h4, p, ul {
   margin: 0;
   padding: 0; }
 
+h1, h2, h3, h4 {
+  font-weight: 600; }
+
 h1 {
-  font-size: 1.616666667em;
-  /* 29.1px */
-  line-height: 1.340206186;
-  /* 39px */
-  margin-bottom: 1.786941581em;
-  /* 52px */ }
+  font-size: 2.055555556em;
+  /* 37px */
+  line-height: 1.405405405;
+  /* 52px */
+  margin-bottom: 0.722222222em;
+  /* 26px */
+  padding: 0 1%; }
 
 h2 {
   font-size: 1.272222222em;
   /* 22.9px */
-  line-height: 1.444444444;
-  margin-bottom: 1.135371179em; }
+  line-height: 1.135371179;
+  margin-bottom: 1.135371179em;
+  padding: 0 1%;
+  font-weight: 600; }
 
 body {
   margin: 0 auto;
-  color: #444444;
-  font-family: 'Source Sans Pro'; }
+  color: #444444; }
 
-#container {
-  padding: 0 10%; }
+.one-column {
+  padding: 5.777777778em 6%;
+  max-width: 1400px;
+  margin: 0 auto; }
+
+.two-column {
+  padding: 10%; }
   @media (min-width: 700px) {
-    #container {
+    .two-column {
       padding: 0; } }
 
+.centered {
+  text-align: center; }
+  .centered a {
+    text-decoration: underline; }
+
 p {
-  font-weight: 300;
   margin-bottom: 1.444444444em; }
 
 img {
   max-width: 100%;
   margin: 0 0 26px 0; }
 
-#search-toggle {
+form {
+  margin: 4.333333333em 0; }
+
+input[type=text] {
   display: block;
-  margin: 0 0 0 20%;
-  width: 52px;
-  height: 52px;
+  width: 100%;
+  height: 2.888888889em;
+  border: none;
+  background-color: #e6e6e6;
+  padding: 0 1%;
+  text-align: center; }
+  @media (min-width: 550px) {
+    input[type=text] {
+      float: left;
+      width: 78%;
+      text-align: left; } }
+
+input[type=submit] {
+  display: block;
+  width: 100%;
+  border: none;
   background-color: #e085a4;
   color: white;
-  line-height: 52px;
-  text-align: center;
-  text-transform: uppercase; }
-
-#search-toggle:hover {
-  background-color: #d55d86; }
+  height: 2.888888889em; }
+  input[type=submit]:hover {
+    background-color: #e599b3; }
+  @media (min-width: 550px) {
+    input[type=submit] {
+      float: left;
+      width: 22%; } }
 
 .search-btn {
   display: none;
@@ -180,7 +211,7 @@ img {
       padding: 5.777777778em 5%; } }
 
 .avatar {
-  -webkit-border-radius: 52px;
+  -webkit-border-radius: 50%;
   max-width: 80.620155%; }
 
 .blog-owner {

@@ -16,7 +16,7 @@ class App < Sinatra::Base
     haml :home
   end
 
-  before do
+  helpers do
     # Creates the TumblrAsk object required for the view templates,
     # redirecting if the username does not exist
     def create_asks(page_start = 1)
@@ -28,7 +28,7 @@ class App < Sinatra::Base
 
         haml :questions
       else
-        flash[:error] = "That user does not exist"
+        flash[:error] = "That user does not exist or they have no Asks available"
         redirect to('/')
       end
     end

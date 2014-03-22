@@ -1,5 +1,12 @@
-%h1 Homepage
+.one-column
+  %h1 bloodhound
+  %h2 A simple Tumblr Ask viewer
 
-%form#search{ action: "/search", method: "get"}
-  %input.search-field{ type: "text", name: "username", placeholder: "Enter a tumblr username..." }
-  %input{ type: "submit", value: "Search"}
+  %form#search.clearfix{ action: "/search", method: "get"}
+    %input.search-field{ type: "text", name: "username", placeholder: "Enter a tumblr username or blog URL...." }
+    %input{ type: "submit", value: "Search"}
+  %p.centered
+    Need some inspiration? How about Tumblr founder
+    %a{href: "search?username=davidslog.com"}
+      David Karp’s Asks
+    ?

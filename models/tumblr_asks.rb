@@ -50,6 +50,9 @@ class TumblrAsks
     # and return false if so
     if response["meta"]["status"] == 404
       return false
+    elsif response["response"]["posts"].empty?
+      # Page number was too high or the user has no Asks
+      return false
     else
       question_list = []
 
