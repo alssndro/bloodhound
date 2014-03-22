@@ -1,10 +1,16 @@
 require 'sinatra/base'
 require 'haml'
+require 'sinatra/flash'
 
 # recursively require all model files
 Dir[Dir.pwd + "/models/**/*.rb"].each { |f| require f }
 
 class App < Sinatra::Base
+
+  configure do
+    enable :sessions
+    register Sinatra::Flash
+  end
 
   get '/' do
     haml :home
@@ -15,14 +21,15 @@ class App < Sinatra::Base
     # redirecting if the username does not exist
     def create_asks(page_start = 1)
       @asks = TumblrAsks.new(params[:username])
-      
+
       # Condition returns false if the user does not exist
       if @asks.questions(page_start)
         @current_page_no = page_start
 
         haml :questions
       else
-        haml :user_does_not_exist
+        flash[:error] = "That user does not exist"
+        redirect to('/')
       end
     end
   end

@@ -6,6 +6,7 @@ gem 'rake'
 gem 'sinatra'
 gem 'httparty'
 gem 'haml'
+gem 'sinatra-flash'
 
 group :development do
   gem 'shotgun'
