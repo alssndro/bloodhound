@@ -6,12 +6,6 @@ Dir[Dir.pwd + "/models/**/*.rb"].each { |f| require f }
 
 class App < Sinatra::Base
 
-  helpers do
-    def check_user_exists(asks)
-
-    end
-  end
-
   get '/' do
     haml :home
   end
