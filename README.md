@@ -1,3 +1,5 @@
+![bloodhound](public/img/logo.png)
+
 ## Bloodhound
 
 Bloodhound is a Sinatra app that allows you to view all of a user's Tumblr asks easily.
