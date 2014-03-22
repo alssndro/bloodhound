@@ -1,5 +1,5 @@
 .rspec
 .DS_Store
-lib/tumblr_config.yaml
+config/tumblr_config.yaml
 todo.txt
 .sass-cache
