@@ -105,8 +105,8 @@ h2 {
   /* 22.9px */
   line-height: 1.135371179;
   margin-bottom: 1.135371179em;
-  padding: 0 1%;
-  font-weight: 600; }
+  font-weight: 600;
+  padding: 0 1%; }
 
 body {
   margin: 0 auto;
@@ -119,8 +119,12 @@ body {
   .header h1 {
     color: white; }
 
+.top-logo-cont {
+  width: 2.944444444em;
+  margin: 1.444444444em auto 0 auto; }
+
 .one-column {
-  padding: 5.777777778em 6%;
+  padding: 4.333333333em 6%;
   max-width: 1400px;
   margin: 0 auto; }
 
@@ -172,16 +176,6 @@ input[type=submit] {
     input[type=submit] {
       float: left;
       width: 22%; } }
-
-.search-box {
-  display: none;
-  width: 60%;
-  float: left;
-  margin: 52px 0 0 20%;
-  height: 2.888888889em;
-  border: none;
-  background-color: #e6e6e6;
-  padding: 0 5%; }
 
 #blog-info {
   width: 100%;
@@ -248,6 +242,8 @@ input[type=submit] {
 
 #ask-list {
   width: 100%; }
+  #ask-list h2 {
+    padding: 0; }
   @media (min-width: 700px) {
     #ask-list {
       float: left;
@@ -281,6 +277,15 @@ input[type=submit] {
 .error {
   color: white;
   background-color: #bbbbbb; }
+
+footer {
+  margin: 8.666666667em 0;
+  height: 4.222222222em;
+  background-image: url("../img/paws@2x.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  opacity: 0.6; }
 
 /* ==========================================================================
    Helper classes

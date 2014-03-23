@@ -10,12 +10,12 @@
     #container.clearfix
       #header
         = styled_flash
-        -# %a#search-toggle{href: "#"}
-        -#   %img.search-icon{src: "/search-icon.png"}
-        -# %form.search-form{ action: "/search", method: "get" }
-        -#   %input.search-box{ type: "text", name: "username", placeholder: "Enter a tumblr username..." }
-        -#   %input.search-btn{ type: "submit", value: "Search"}
+        .top-logo-cont
+          %a{href: '/'}
+            %img{src: "img/logo@2x.png"}
       .main.clearfix
         = yield
+      %footer
+
     %script{:type => 'text/javascript', :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'}
     %script{:type => 'text/javascript', :src => '/js/app.js'}
