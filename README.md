@@ -1,6 +1,7 @@
-![bloodhound](public/img/logo.png)
+# Bloodhound
 
-## Bloodhound
+![](screenshots/homepage.jpg)
+![](screenshots/asks.jpg)
 
 Bloodhound is a Sinatra app that allows you to view all of a user's Tumblr Asks easily.
 
